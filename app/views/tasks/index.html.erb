@@ -3,7 +3,14 @@
 
 <% @tasks.each do |task| %>
   <h2><%= task.name %></h2>
-  <h1><%= task.status %></h1>
+  <p><%= task.status %></p>
+  <ul>
+    <li><%= link_to("SHOW", task_path(task))%></li>
+    <li><%= link_to("EDIT", edit_task_path(task))%></li>
+    <li><%= link_to "DELETE", task_path(task),
+        method: :delete,
+        data: { confirm: "Are you sure?" } %></li>
+  </ul>
 <% end %>
 
-
+<p><%= link_to("CREATE", new_task_path) %><p>
